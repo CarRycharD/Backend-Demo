@@ -16,7 +16,7 @@ app.use('/login', loginRouter);
 app.use((req, res) => res.status(404).json({ message: 'not found' }));
 
 const main = async (): Promise<void> => {
-  await mongoose.connect(config.mongo.url, { retryWrites: true, w: 'majority' }).then(() => {
+  await mongoose.connect(config.mongo.url).then(() => {
     console.log('Connected to mongoDB.');
   });
   app.listen(config.server.port, () => console.log(`Server is running on port ${config.server.port}`));
