@@ -2,17 +2,20 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGO_USERNAME = process.env.MONGO_USERNAME || '';
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD || '';
-const MONGO_URL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@cluster1.c4zzgvf.mongodb.net/`;
+const MONGO_URI = process.env.MONGO_URI || '';
+const VALID_USERNAME: string = process.env.VALID_USERNAME || '';
+const VALID_PASSWORD: string = process.env.VALID_PASSWORD || '';
+const SECRET_KEY: string = process.env.SECRET_KEY || '';
 
 const SERVER_PORT = process.env.SERVER_PORT ? Number(process.env.SERVER_PORT) : 3000;
 
 export const config = {
   mongo: {
-    url: MONGO_URL
+    url: MONGO_URI,
   },
   server: {
-    port: SERVER_PORT
-  }
+    port: SERVER_PORT,
+  },
 };
+
+export { VALID_USERNAME, VALID_PASSWORD, SECRET_KEY };
