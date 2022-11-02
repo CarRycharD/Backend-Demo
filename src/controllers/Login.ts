@@ -6,12 +6,6 @@ import { Login } from '../interfaces';
 const login = (req: Request, res: Response): void => {
   const { username, password } = req.body as Login;
 
-  if (!username || !password) {
-    res.status(401).json({
-      error: 'Please provide username and password!',
-    });
-  }
-
   if (username !== VALID_USERNAME || password !== VALID_PASSWORD) {
     res.status(401).json({
       error: 'invalid login credentials',

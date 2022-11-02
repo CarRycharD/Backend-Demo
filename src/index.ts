@@ -5,9 +5,11 @@ import morgan from 'morgan';
 import { foodRouter } from './routes/Food';
 import { tokenValidation } from './middleware/TokenValidation';
 import { loginRouter } from './routes/Login';
+import cors from 'cors';
 
 const app = express();
-
+app.options('*', cors());
+app.use(cors({ credentials: true }));
 app.use(morgan('common'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

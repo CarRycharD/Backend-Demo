@@ -6,7 +6,7 @@ export const createFood = async (req: Request, res: Response, next: NextFunction
   try {
     const food: FoodEntryCreateOptions = req.body as FoodEntryCreateOptions;
     const newFood: FoodEntry = await Food.create(food);
-    res.status(200).json({ answer: `Food created`, newFood: newFood });
+    res.status(200).json({ newFood: newFood });
   } catch (error) {
     next(res.status(500).json({ error: 'internal server error' }));
   }
@@ -15,7 +15,7 @@ export const createFood = async (req: Request, res: Response, next: NextFunction
 export const readFood = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const food: FoodEntry | null = await Food.findById(req.params.id);
-    res.status(200).json({ answer: `Food found`, food: food });
+    res.status(200).json({ food: food });
   } catch (error) {
     next(res.status(500).json({ error: 'internal server error' }));
   }
@@ -24,7 +24,7 @@ export const readFood = async (req: Request, res: Response, next: NextFunction):
 export const readAllFood = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const foods: FoodEntry[] = await Food.find({});
-    res.status(200).json({ answer: 'List of foods', foods: foods });
+    res.status(200).json({ foods: foods });
   } catch (error) {
     next(res.status(500).json({ error: 'internal server error' }));
   }
@@ -37,7 +37,7 @@ export const updateFood = async (req: Request, res: Response, next: NextFunction
       new: true,
       runValidators: true,
     });
-    res.status(200).json({ answer: `Food updated!`, foods: updatedFood });
+    res.status(200).json({ foods: updatedFood });
   } catch (error) {
     next(res.status(500).json({ error: 'internal server error' }));
   }
@@ -46,7 +46,7 @@ export const updateFood = async (req: Request, res: Response, next: NextFunction
 export const deleteFood = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const food: FoodEntry | null = await Food.findByIdAndDelete(req.params.id);
-    res.status(200).json({ answer: `Food deleted`, food: food });
+    res.status(200).json({ food: food });
   } catch (error) {
     next(res.status(500).json({ error: 'internal server error' }));
   }
