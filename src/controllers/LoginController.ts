@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY, VALID_PASSWORD, VALID_USERNAME } from '../config/config';
-import { Login } from '../interfaces';
+import { SECRET_KEY, VALID_PASSWORD, VALID_USERNAME } from '../config/Config';
+import { Login } from '../Interfaces';
 
 const login = (req: Request, res: Response): void => {
   const { username, password } = req.body as Login;

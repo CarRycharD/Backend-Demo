@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import Food from '../models/Food';
-import { FoodEntryCreateOptions, FoodEntryUpdateOptions, FoodEntry } from '../interfaces';
+import Food from '../models/FoodModel';
+import { FoodEntryCreateOptions, FoodEntryUpdateOptions, FoodEntry } from '../Interfaces';
 
 export const createFood = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

@@ -1,23 +1,23 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { config } from './config/config';
+import { config } from './config/Config';
 import morgan from 'morgan';
-import { foodRouter } from './routes/Food';
+import { foodRouter } from './routes/FoodRoute';
 import { tokenValidation } from './middleware/TokenValidation';
-import { loginRouter } from './routes/Login';
+import { loginRouter } from './routes/LoginRoute';
 import cors from 'cors';
 
-const app = express();
-app.options('*', cors());
-app.use(cors({ credentials: true }));
-app.use(morgan('common'));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use('/api/v1/food', tokenValidation, foodRouter);
-app.use('/login', loginRouter);
-app.use((req, res) => res.status(404).json({ message: 'not found' }));
-
 const main = async (): Promise<void> => {
+  const app = express();
+  app.options('*', cors());
+  app.use(cors({ credentials: true }));
+  app.use(morgan('common'));
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+  app.use('/api/v1/food', tokenValidation, foodRouter);
+  app.use('/login', loginRouter);
+  app.use((req, res) => res.status(404).json({ message: 'not found' }));
+
   await mongoose.connect(config.mongo.url).then(() => {
     console.log('Connected to mongoDB.');
   });

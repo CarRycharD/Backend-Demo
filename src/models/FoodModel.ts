@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { FoodEntry, FoodEntryDetails } from '../interfaces';
+import { FoodEntryDetails, FoodEntry } from '../Interfaces';
 
 const DetailsSchema: Schema = new Schema<FoodEntryDetails>(
   {
