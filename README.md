@@ -1,30 +1,10 @@
-# backend-node-task
-
-Please use typescript, we included linting, typescript config and types to use in this project.
-
-You can start the project with `yarn start:dev`.
-You can check the lint and formatting of the project with `yarn lint`.
-
-If you are using VSCode you can use these extensions:
-- https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
-- https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-
 ## Task 1 - The server
-
-For the web serving part you could use either 
-- [Koa](https://koajs.com/)
-- [Express](https://expressjs.com/)
-- [Fastify](https://www.fastify.io/)
 
 Server should be getting its port from environment variable `PORT`, otherwise it should be served on port `3000`
 
 ## Task 2 - Request logging
 
 Please include a middleware for logging or set it up if included within the frameworks to log all requests
-- https://github.com/koajs/logger
-- https://github.com/expressjs/morgan
-- https://www.fastify.io/docs/latest/Reference/Logging/
-
 
 ## Task 3 - CRUD
 
@@ -50,8 +30,6 @@ On non-implemented methods / endpoints the server should respond with `404` with
   "error": "not found"
 }
 ```
-
-Data should be stored in-memory.
 
 ## Task 4 - Authentication
 
@@ -95,18 +73,4 @@ On invalid, expired or not-provided token server should respond with 401.
 \
 If the token is valid and verified, the endpoints should work as before.
 
-Tips: You can use authorization middelwares / utility libraries:
- - https://www.npmjs.com/package/express-jwt
- - https://www.npmjs.com/package/koa-jwt
- - https://github.com/fastify/fastify-jwt
 
-## Task 6 - Data persistence (optional)
-
-Until now, data was stored within the memory. This meant, that with each application restart the data has been lost.
-
-Data should be stored in an external database so we don't loose data on server restart. This could be any type of external database of your choice.
-
-Suggestions:
-- redis - key-value store (https://www.npmjs.com/package/mongoose, https://www.npmjs.com/package/ioredis)
-- mongodb - document db (https://www.npmjs.com/package/mongodb, https://www.npmjs.com/package/mongoose)
-- postgresql - sql db (https://www.npmjs.com/package/pg)
